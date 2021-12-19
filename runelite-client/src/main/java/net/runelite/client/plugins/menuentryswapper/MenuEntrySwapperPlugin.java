@@ -153,6 +153,11 @@ public class MenuEntrySwapperPlugin extends Plugin
 		"first mate deri",
 		"first mate peri"
 	);
+	
+	private static final Set<String> BLACKJACK_NPCS = ImmutableSet.of(
+		"bandit",
+		"menaphite thug",
+	);
 
 	@Inject
 	private Client client;
@@ -202,6 +207,7 @@ public class MenuEntrySwapperPlugin extends Plugin
 	@VisibleForTesting
 	void setupSwaps()
 	{
+		swap("talk-to", BLACKJACK_NPS::contains, "pickpocket", config::swapPickpocket);
 		swap("talk-to", "mage of zamorak", "teleport", config::swapAbyssTeleport);
 		swap("talk-to", "rionasta", "send-parcel", config::swapHardWoodGroveParcel);
 		swap("talk-to", "captain khaled", "task", config::swapCaptainKhaled);
@@ -361,6 +367,8 @@ public class MenuEntrySwapperPlugin extends Plugin
 		swap("value", "sell 5", () -> shiftModifier() && config.shopSell() == SellMode.SELL_5);
 		swap("value", "sell 10", () -> shiftModifier() && config.shopSell() == SellMode.SELL_10);
 		swap("value", "sell 50", () -> shiftModifier() && config.shopSell() == SellMode.SELL_50);
+		
+		swap("talk-to", "knock-out", BLACKJACK_NPCS, () -> shiftModifier() && config.swapKnockout());
 
 		swap("wear", "tele to poh", config::swapTeleToPoh);
 

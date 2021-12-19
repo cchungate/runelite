@@ -389,6 +389,17 @@ public interface MenuEntrySwapperConfig extends Config
 	{
 		return HouseAdvertisementMode.VIEW;
 	}
+	
+	@ConfigItem(
+		keyName = "swapKnockout",
+		name = "Knockout",
+		description = "Swaps the Talk-to options with Knock-out on Bandits and Menaphites when shift is held."
+		section = npcSection
+	)
+	default boolean swapKnockout()
+	{
+		return true;
+	}
 
 	@ConfigItem(
 		keyName = "swapPay",
@@ -397,6 +408,17 @@ public interface MenuEntrySwapperConfig extends Config
 		section = npcSection
 	)
 	default boolean swapPay()
+	{
+		return true;
+	}
+	
+	@ConfigItem(
+		keyName = "swapPickpocket",
+		name = "Pickpocket",
+		description = "Swap Talk-to with Pickpocket on NPCs"
+		section = npcSection
+	)
+	default boolean swapPickpocket()
 	{
 		return true;
 	}
